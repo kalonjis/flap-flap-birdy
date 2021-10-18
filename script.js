@@ -84,6 +84,9 @@ const render = () =>{
         ctx.font = "bold 30px courier";
     }
 
+    // score display
+    document.getElementById('bestScore').innerHTML = `Meilleur : ${bestScore}`;
+    document.getElementById('currentScore').innerHTML = `Actuel : ${bestScore}`;
 
     window.requestAnimationFrame(render)
 }
