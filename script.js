@@ -24,7 +24,10 @@ const render = () =>{
 
 
     //background
+        //first image
     ctx.drawImage(img, 0, 0, canvas.width, canvas.height, -((index * (speed /2)) % canvas.width) + canvas.width, 0, canvas.width, canvas.height )
+        //second image to fix visual effect
+    ctx.drawImage(img, 0, 0, canvas.width, canvas.height, -((index * (speed /2)) % canvas.width) , 0, canvas.width, canvas.height )
 
     // bird
     ctx.drawImage(img , 432, Math.floor((index % 9) / 3) * size[1] , ...size, ((canvas.width / 2) - size[0] / 2), flyHeight, ...size);
