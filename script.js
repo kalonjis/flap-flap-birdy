@@ -58,6 +58,18 @@ const render = () =>{
             //bottom pipe
             ctx.drawImage(img, (432 + pipeWidth), 108, pipeWidth, (canvas.height - pipe[1] + pipeGap), pipe[0], (pipe[1]+ pipeGap), pipeWidth, (canvas.height - pipe[1]+ pipeGap) );
 
+            // after having avoided a pipe
+            if(pipe[0] <= -pipeWidth) {
+                //score record
+                currentScore++;
+                bestScore = Math.max(bestScore, currentScore);
+
+                //remove pipe + create new one
+                pipes = [...pipes.slice(1), [pipes[pipes.length-1][0] + pipeGap +pipeWidth, pipeLoc()]]
+                console.log(pipes)
+
+
+            }
         })
 
     
