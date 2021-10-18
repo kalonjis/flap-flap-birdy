@@ -29,15 +29,33 @@ const render = () =>{
         //second image to fix visual effect
     ctx.drawImage(img, 0, 0, canvas.width, canvas.height, -((index * (speed /2)) % canvas.width) , 0, canvas.width, canvas.height );
 
-    // bird
-    ctx.drawImage(img , 432, Math.floor((index % 9) / 3) * size[1] , ...size, ((canvas.width / 2) - size[0] / 2), flyHeight, ...size);
-    flyHeight = (canvas.height / 2) - (size[1] / 2);
+    if (gamePlaying) {
+        // bird
+        ctx.drawImage(img , 432, Math.floor((index % 9) / 3) * size[1] , ...size, cTenth, flyHeight, ...size); // bird position at 1/10 of canvas on X
+        flight += gravity;
+        flyHeight = Math.min(flyHeight + flight, canvas.height - size[1]) // Bird position on Y
 
-    // text
-    ctx.fillText(`Meilleur score : ${bestScore}`, 55, 245);
-    ctx.fillText('Cliquez pour jouer', 48, 535);
-    ctx.font = "bold 30px courier";
+    
+    } else {
+        // bird
+        ctx.drawImage(img , 432, Math.floor((index % 9) / 3) * size[1] , ...size, ((canvas.width / 2) - size[0] / 2), flyHeight, ...size);
+        flyHeight = (canvas.height / 2) - (size[1] / 2);
+    
+        // text
+        ctx.fillText(`Meilleur score : ${bestScore}`, 55, 245);
+        ctx.fillText('Cliquez pour jouer', 48, 535);
+        ctx.font = "bold 30px courier";
+    }
+
 
     window.requestAnimationFrame(render)
 }
+
+// Home render
 img.onload = render
+
+// Starting game
+document.addEventListener('click', () => gamePlaying = true);
+
+// Jumping
+window.onclick = () => flight = jump;
