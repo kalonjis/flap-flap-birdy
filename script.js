@@ -25,14 +25,18 @@ const render = () =>{
 
     //background
         //first image
-    ctx.drawImage(img, 0, 0, canvas.width, canvas.height, -((index * (speed /2)) % canvas.width) + canvas.width, 0, canvas.width, canvas.height )
+    ctx.drawImage(img, 0, 0, canvas.width, canvas.height, -((index * (speed /2)) % canvas.width) + canvas.width, 0, canvas.width, canvas.height );
         //second image to fix visual effect
-    ctx.drawImage(img, 0, 0, canvas.width, canvas.height, -((index * (speed /2)) % canvas.width) , 0, canvas.width, canvas.height )
+    ctx.drawImage(img, 0, 0, canvas.width, canvas.height, -((index * (speed /2)) % canvas.width) , 0, canvas.width, canvas.height );
 
     // bird
     ctx.drawImage(img , 432, Math.floor((index % 9) / 3) * size[1] , ...size, ((canvas.width / 2) - size[0] / 2), flyHeight, ...size);
     flyHeight = (canvas.height / 2) - (size[1] / 2);
 
+    // text
+    ctx.fillText(`Meilleur score : ${bestScore}`, 55, 245);
+    ctx.fillText('Cliquez pour jouer', 48, 535);
+    ctx.font = "bold 30px courier";
 
     window.requestAnimationFrame(render)
 }
