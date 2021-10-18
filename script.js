@@ -22,7 +22,7 @@ let index = 0,
 const render = () =>{
     index++;
 
-    ctx.drawImage(img , 432, 0, ...size, ((canvas.width / 2) - size[0] / 2), flyHeight, ...size);
+    ctx.drawImage(img , 432, Math.floor((index % 9) / 3) * size[1] , ...size, ((canvas.width / 2) - size[0] / 2), flyHeight, ...size);
     flyHeight = (canvas.height / 2) - (size[1] / 2);
 
 
